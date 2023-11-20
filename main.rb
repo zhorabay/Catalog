@@ -26,6 +26,7 @@ class Main
     when 8 then @app.list_all_games
     when 9 then @app.list_all_authors
     when 10 then exit_app
+    end
   end
 
   def display_menu
