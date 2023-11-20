@@ -1,8 +1,8 @@
 require 'date'
 
 class Item
-  attr_accessor :id, :publish_date
-  attr_reader :archived, :author, :label
+  attr_accessor :publish_date
+  attr_reader :author, :label
 
   def iniitialize(publish_date, archived: false, id: Random.rand(1...1000))
     @id = id
@@ -28,6 +28,8 @@ class Item
   def move_to_archive
     @archived = true if can_be_archived?
   end
+
+  private
 
   def can_be_archived()
     difference = Time.now.year - @publish_date.year.move_to_i
