@@ -1,5 +1,5 @@
 require_relative 'app'
-# rubocop:disable Metrics/CyclomaticComplexity
+
 class Main
   def initialize
     @app = App.new
@@ -49,6 +49,6 @@ class Main
     exit
   end
 end
-# rubocop:enable Metrics/CyclomaticComplexity
+
 main_app = Main.new
 main_app.main
