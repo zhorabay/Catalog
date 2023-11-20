@@ -25,6 +25,10 @@ class Item
     label.items << self unless label.items.include?(self)
   end
 
+  def move_to_archive
+    @archived = true if can_be_archived?
+  end
+
   def can_be_archived()
     difference = Time.now.year - @publish_date.year.move_to_i
     difference >= 10
