@@ -1,10 +1,10 @@
 require 'date'
 
 class Item
-  attr_accessor :publish_date
+  attr_accessor :publish_date, :archived
   attr_reader :author, :label
 
-  def iniitialize(publish_date, archived: false, id: Random.rand(1...1000))
+  def initialize(publish_date, archived: false, id: Random.rand(1...1000))
     @id = id
     @publish_date = publish_date
     @archived = archived
@@ -31,8 +31,8 @@ class Item
 
   private
 
-  def can_be_archived()
-    difference = Time.now.year - @publish_date.year.move_to_i
+  def can_be_archived?
+    difference = Time.now.year - @publish_date.year
     difference >= 10
   end
 end

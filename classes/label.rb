@@ -1,5 +1,3 @@
-require_relative 'item'
-
 class Label
   attr_reader :id, :title, :color, :items
 
@@ -12,6 +10,6 @@ class Label
 
   def add_items(item)
     @items << item
-    item.add_label(self)
+    item.label = self
   end
 end
