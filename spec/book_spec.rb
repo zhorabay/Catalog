@@ -16,7 +16,7 @@ RSpec.describe Book do
     end
   end
 
-  describe '#move_to_archive' do
+  describe '#can_be_archived' do
     context 'when cover state is good and more than 10 years old' do
       it 'archives the book' do
         allow(book).to receive(:can_be_archived?).and_return(true)
