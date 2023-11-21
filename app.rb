@@ -1,11 +1,15 @@
 require_relative 'classes/book'
 require_relative 'classes/item'
 require_relative 'classes/label'
+require_relative 'classes/music_album'
+require_relative 'classes/genre'
 
 class App
   def initialize
     @books = []
     @labels = []
+    @albums = []
+    @genres = []
   end
 
   def add_a_book
@@ -39,7 +43,19 @@ class App
     end
   end
 
-  def add_a_album; end
+  def add_a_album
+    print 'Enter Genre: '
+    genre = gets.chomp
+    genre = Genre.new(name: genre)
+    print 'Is it on Spotify? (Y/N): '
+    on_spotify = gets.chomp.upcase == 'Y'
+    print 'Enter date published: '
+    date_published = gets.chomp
+    album = MusicAlbum.new(on_spotify, date_published)
+    @albums.push(album)
+    @genres.push(genre)
+    puts 'Album added successfully'
+  end
 
   def add_a_game; end
 
@@ -55,9 +71,21 @@ class App
     end
   end
 
-  def list_all_albums; end
+  def list_all_albums
+    @albums.each do |album|
+      puts "ID: #{album.id}, On Spotify: #{album.on_spotify}, Published date: #{album.publish_date}"
+    end
+  end
 
-  def list_all_genres; end
+  def list_all_genres
+    if @genres.empty?
+      puts 'No genres added yet'
+    else
+      @genres.each do |genre|
+        puts "ID: #{genre.id}, Name: #{genre.name}"
+      end
+    end
+  end
 
   def list_all_games; end
 
