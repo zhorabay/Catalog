@@ -1,6 +1,6 @@
-require_relative './classes/book'
-require_relative './classes/item'
-require_relative './classes/label'
+require_relative 'classes/book'
+require_relative 'classes/item'
+require_relative 'classes/label'
 
 class App
   def initialize
@@ -54,7 +54,6 @@ class App
       puts "ID: #{label.id}, Title: #{label.title}, Color: #{label.color}"
     end
   end
-
 
   def list_all_albums; end
 
