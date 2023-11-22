@@ -25,11 +25,18 @@ RSpec.describe Game do
       end
     end
 
-    context 'when cover state is good but less than 10 years old' do
+    context 'when last played game is more then 2 years but less than 10 years old' do
       it 'does not archive the game' do
         allow(game).to receive(:can_be_archived?).and_return(false)
         game.move_to_archive
         expect(game.archived).to be false
+      end
+    end
+
+    context 'when last played game is more less than 2 years' do
+      it 'returns if the game is archived' do
+        new_game = Game.new(Date.new(2020, 1, 1), 'no', Date.new(2021, 1, 1))
+        expect(new_game.aligable).to eq(false)
       end
     end
   end

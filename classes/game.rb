@@ -10,9 +10,13 @@ class Game < Item
     @last_played_at = last_played_at
   end
 
+  def aligable
+    (Date.today.year - @last_played_at.year) > 2
+  end
+
   private
 
   def can_be_archived?
-    super && (Date.today.year - @last_played_at.year) > 2
+    super && aligable
   end
 end
