@@ -44,6 +44,7 @@ class App
   end
 
   def add_a_album
+    puts 'Enter the album'
     print 'Enter Genre: '
     genre = gets.chomp
     genre = Genre.new(name: genre)
