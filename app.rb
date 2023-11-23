@@ -3,6 +3,8 @@ require_relative 'classes/item'
 require_relative 'classes/label'
 require_relative 'classes/music_album'
 require_relative 'classes/genre'
+require_relative 'classes/game'
+require_relative 'classes/author'
 
 class App
   def initialize
@@ -10,6 +12,8 @@ class App
     @labels = []
     @albums = []
     @genres = []
+    @games = []
+    @authors = []
   end
 
   def add_a_book
@@ -58,7 +62,26 @@ class App
     puts 'Album added successfully'
   end
 
-  def add_a_game; end
+  def add_a_game
+    puts 'Enter authors first name'
+    first_name = gets.chomp
+    puts 'Enter authors last name'
+    last_name = gets.chomp
+    puts 'Enter the pusblish date of the game (YYYY-MM-DD)'
+    publish_date = gets.chomp
+    puts 'Enter the game is multiplayer? (Y/N): '
+    multiplayer = gets.chomp
+    puts 'Enter the the game last played at (YYYY-MM-DD)'
+    last_played_at = gets.chomp
+
+    author = Author.new(first_name, last_name)
+    game = Game.new(publish_date, multiplayer, last_played_at)
+
+    @authors.push(author)
+    @games.push(game)
+
+    puts 'Game created successfully'
+  end
 
   def list_all_books
     @books.each do |book|
@@ -88,7 +111,15 @@ class App
     end
   end
 
-  def list_all_games; end
+  def list_all_games
+    @games.each do |game|
+      puts "publish date: #{game.publish_date}, multiplayer: #{game.multiplayer}, last played: #{game.last_played_at}"
+    end
+  end
 
-  def list_all_authors; end
+  def list_all_authors
+    @authors.each do |author|
+      puts "ID: #{author.id}, First Name: #{author.first_name}, Last Name: #{author.last_name}"
+    end
+  end
 end
