@@ -14,4 +14,8 @@ class Book < Item
   def can_be_archived?
     super || @cover_state == 'bad'
   end
+
+  def self.all
+    ObjectSpace.each_object(self).to_a
+  end
 end
