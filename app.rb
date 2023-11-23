@@ -67,7 +67,7 @@ class App
     first_name = gets.chomp
     puts 'Enter authors last name'
     last_name = gets.chomp
-    puts 'Enter the pusblish date of the book (YYYY-MM-DD)'
+    puts 'Enter the pusblish date of the game (YYYY-MM-DD)'
     publish_date = gets.chomp
     puts 'Enter the game is multiplayer? (Y/N): '
     multiplayer = gets.chomp
