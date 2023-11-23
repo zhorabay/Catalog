@@ -125,25 +125,27 @@ class App
   end
 
   def save_data
-    albums = MusicAlbum.all.map { |album| { on_spotify: album.publish_date, publish_date: album.on_spotify, id: album.id } }
-    genres = Genre.all.map do |genre| 
+    albums = MusicAlbum.all.map do |album|
+      { on_spotify: album.publish_date, publish_date: album.on_spotify, id: album.id }
+    end
+    genres = Genre.all.map do |genre|
       { name: genre.name, id: genre.id }
     end
 
     music_album_json = albums.to_json
     genre_json = genres.to_json
-  
+
     folder_path = 'JSON/'
-    album_json_file = folder_path + 'music_album.json'
-    genre_json_file = folder_path + 'genre.json'
-  
+    album_json_file = "#{folder_path}music_album.json"
+    genre_json_file = "#{folder_path}genre.json"
+
     File.write(album_json_file, music_album_json)
     File.write(genre_json_file, genre_json)
   end
 
   def load_data
     album_json_path = 'JSON/music_album.json'
-  
+
     if File.exist?(album_json_path)
       data = JSON.parse(File.read(album_json_path))
       @albums = data.map do |album|
