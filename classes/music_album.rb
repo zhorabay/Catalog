@@ -12,4 +12,8 @@ class MusicAlbum < Item
   def can_be_archived?
     super == true && @on_spotify == true
   end
+
+  def self.all
+    ObjectSpace.each_object(self).to_a
+  end
 end

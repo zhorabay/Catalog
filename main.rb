@@ -6,6 +6,7 @@ class Main
   end
 
   def main
+    @app.load_data
     puts 'Welcome to our Catalog app'
     loop do
       display_menu
@@ -46,6 +47,7 @@ class Main
 
   def exit_app
     puts 'Thank you for using this app!'
+    @app.save_data
     exit
   end
 end
