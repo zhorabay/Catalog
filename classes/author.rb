@@ -2,7 +2,7 @@ require_relative 'item'
 require 'date'
 
 class Author
-  attr_reader :items, :first_name, :last_name
+  attr_reader :items, :first_name, :last_name, :id
 
   def initialize(first_name, last_name)
     @id = Random.rand(1...1000)
