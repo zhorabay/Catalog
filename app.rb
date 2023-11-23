@@ -131,16 +131,28 @@ class App
     genres = Genre.all.map do |genre|
       { name: genre.name, id: genre.id }
     end
+    books = Book.all.map do |book|
+      { publish_date: book.publish_date, publisher: book.publisher, cover_state: book.cover_state }
+    end
+    labels = Label.all.map do |label|
+      { title: label.title, color: label.color }
+    end
 
     music_album_json = albums.to_json
     genre_json = genres.to_json
+    book_json = books.to_json
+    label_json = labels.to_json
 
     folder_path = 'JSON/'
     album_json_file = "#{folder_path}music_album.json"
     genre_json_file = "#{folder_path}genre.json"
+    book_json_file = "#{folder_path}book.json"
+    label_json_file = "#{folder_path}label.json"
 
     File.write(album_json_file, music_album_json)
     File.write(genre_json_file, genre_json)
+    File.write(book_json_file, book_json)
+    File.write(label_json_file, label_json)
   end
 
   def load_data
@@ -163,6 +175,29 @@ class App
         Genre.new(genre['name'])
       end
       puts 'Genres loaded successfully'
+    else
+      puts 'No data to load'
+    end
+
+    book_json_path = 'JSON/book.json'
+
+    if File.exist?(book_json_path)
+      data = JSON.parse(File.read(book_json_path))
+      @books = data.map do |book|
+        Book.new(book['publish_date'], book['publisher'], book['cover_state'])
+      end
+      puts 'Book loaded successfully'
+    else
+      puts 'No data to load'
+    end
+
+    label_json_path = 'JSON/label.json'
+    if File.exist?(label_json_path)
+      data = JSON.parse(File.read(label_json_path))
+      @labels = data.map do |label|
+        Label.new(label['title'], label['color'])
+      end
+      puts 'Label loaded successfully'
     else
       puts 'No data to load'
     end
