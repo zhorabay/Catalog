@@ -137,24 +137,37 @@ class App
     labels = Label.all.map do |label|
       { title: label.title, color: label.color }
     end
+    games = Game.all.map do |game|
+      { publish_date: game.publish_date, multiplayer: game.multiplayer, last_played_at: game.last_played_at }
+    end
+    authors = Author.all.map do |author|
+      { first_name: author.first_name, last_name: author.last_name }
+    end
 
     music_album_json = albums.to_json
     genre_json = genres.to_json
     book_json = books.to_json
     label_json = labels.to_json
+    game_json = games.to_json
+    author_json = authors.to_json
 
     folder_path = 'JSON/'
     album_json_file = "#{folder_path}music_album.json"
     genre_json_file = "#{folder_path}genre.json"
     book_json_file = "#{folder_path}book.json"
     label_json_file = "#{folder_path}label.json"
+    game_json_file = "#{folder_path}game.json"
+    author_json_file = "#{folder_path}author.json"
 
     File.write(album_json_file, music_album_json)
     File.write(genre_json_file, genre_json)
     File.write(book_json_file, book_json)
     File.write(label_json_file, label_json)
+    File.write(game_json_file, game_json)
+    File.write(author_json_file, author_json)
   end
 
+  # rubocop:disable Metrics/AbcSize
   def load_data
     album_json_path = 'JSON/music_album.json'
 
@@ -179,6 +192,17 @@ class App
       puts 'No data to load'
     end
 
+    author_json_path = 'JSON/author.json'
+    if File.exist?(author_json_path)
+      data = JSON.parse(File.read(author_json_path))
+      @authors = data.map do |author|
+        Author.new(author['first_name'], author['last_name'])
+      end
+      puts 'Author loaded successfully'
+    else
+      puts 'no data to load'
+    end
+
     book_json_path = 'JSON/book.json'
 
     if File.exist?(book_json_path)
@@ -201,5 +225,17 @@ class App
     else
       puts 'No data to load'
     end
+
+    game_json_path = 'JSON/game.json'
+    if File.exist?(game_json_path)
+      data = JSON.parse(File.read(game_json_path))
+      @games = data.map do |game|
+        Game.new(game['publish_date'], game['multiplayer'], game['last_played_at'])
+      end
+      puts 'Game loaded successfully'
+    else
+      puts 'No data to load'
+    end
   end
+  # rubocop:enable Metrics/AbcSize
 end

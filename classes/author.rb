@@ -15,4 +15,8 @@ class Author
     items << item
     item.author = self
   end
+
+  def self.all
+    ObjectSpace.each_object(self).to_a
+  end
 end
