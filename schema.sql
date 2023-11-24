@@ -1,6 +1,7 @@
 CREATE TABLE items (
   id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   genre_id INT,
+  author_id INT,
   author VARCHAR(50) NOT NULL,
   source VARCHAR(50) NOT NULL,
   label VARCHAR(50) NOT NULL,
@@ -8,7 +9,8 @@ CREATE TABLE items (
   archived BOOLEAN NOT NULL,
   labels_id INT,
   FOREIGN KEY (labels_id) REFERENCES labels(id),
-  FOREIGN KEY (genre_id) REFERENCES genres(id)
+  FOREIGN KEY (genre_id) REFERENCES genres(id),
+  FOREIGN KEY (author_id) REFERENCES author(id)
 );
 
 CREATE TABLE books (
@@ -33,4 +35,18 @@ CREATE TABLE music_albums (
 CREATE TABLE genres (
   id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE author (
+  id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE game (
+  id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  publish_date DATE NOT NULL,
+  multiplayer VARCHAR(100) NOT NULL,
+  last_played_at DATE NOT NULL,
+  FOREIGN KEY (id) REFERENCES items(id)
 );
