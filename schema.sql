@@ -2,9 +2,6 @@ CREATE TABLE items (
   id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   genre_id INT,
   author_id INT,
-  author VARCHAR(50) NOT NULL,
-  source VARCHAR(50) NOT NULL,
-  label VARCHAR(50) NOT NULL,
   publish_date DATE NOT NULL,
   archived BOOLEAN NOT NULL,
   labels_id INT,
@@ -12,6 +9,10 @@ CREATE TABLE items (
   FOREIGN KEY (genre_id) REFERENCES genres(id),
   FOREIGN KEY (author_id) REFERENCES author(id)
 );
+
+CREATE INDEX idx_items_labels_id ON items(labels_id);
+CREATE INDEX idx_items_genre_id ON items(genre_id);
+CREATE INDEX idx_items_author_id ON items(author_id);
 
 CREATE TABLE books (
   id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
