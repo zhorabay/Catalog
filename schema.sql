@@ -1,0 +1,53 @@
+CREATE TABLE items (
+  id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  genre_id INT,
+  author_id INT,
+  publish_date DATE NOT NULL,
+  archived BOOLEAN NOT NULL,
+  labels_id INT,
+  FOREIGN KEY (labels_id) REFERENCES labels(id),
+  FOREIGN KEY (genre_id) REFERENCES genres(id),
+  FOREIGN KEY (author_id) REFERENCES author(id)
+);
+
+CREATE INDEX idx_items_labels_id ON items(labels_id);
+CREATE INDEX idx_items_genre_id ON items(genre_id);
+CREATE INDEX idx_items_author_id ON items(author_id);
+
+CREATE TABLE books (
+  id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  publisher VARCHAR(50) NOT NULL,
+  cover_state VARCHAR(50) NOT NULL,
+  FOREIGN KEY (id) REFERENCES items(id)
+);
+
+CREATE TABLE labels (
+  id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  title VARCHAR(50) NOT NULL,
+  color VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE music_albums (
+  id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  date_published DATE NOT NULL,
+  FOREIGN KEY (id) REFERENCES items(id)
+);
+
+CREATE TABLE genres (
+  id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE author (
+  id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE game (
+  id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  publish_date DATE NOT NULL,
+  multiplayer VARCHAR(100) NOT NULL,
+  last_played_at DATE NOT NULL,
+  FOREIGN KEY (id) REFERENCES items(id)
+);
