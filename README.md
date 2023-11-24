@@ -30,7 +30,7 @@
 
 # 📖 Ruby Catalog<a name="about-project"></a>
 
-[**Ruby Catalog**] It is a Ruby project that implements OOP principles like: abstraction, inhertance, polymorphism and encapsulation. It is a catalog of my things, where I can add, remove, update and view my things. It is a command line application that runs in IRB.
+[**Ruby Catalog**] is a Ruby project that implements OOP principles like: abstraction, inhertance, polymorphism and encapsulation. It is a catalog of my things, where I can add, remove, update and view my things. It is a command line application that runs in IRB.
 
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -129,6 +129,13 @@ It will install the required gemfile for running the project
 - Twitter: [@jubaer hossain maruf](https://twitter.com/jubaer_maruf)
 - LinkedIn: [Jubaer Maruf](https://www.linkedin.com/in/jubaer-maruf/)
 
+👤 **Assem Zhorabay**
+
+- GitHub: [@zhorabay](https://github.com/zhorabay)
+- LinkedIn: [@zhorabay](https://www.linkedin.com/in/zhorabay)
+- Twitter: [@zhorabay](https://twitter.com/AssemZhorabay)
+- Wellfound: [@zhorabay](https://wellfound.com/u/assem-zhorabay)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
@@ -157,7 +164,7 @@ Feel free to check the [issues page](https://github.com/zhorabay/Catalog/issues)
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project, kindly drop a start ⭐️ for the [repository](https://github.com/zhorabay/Catalog);
+If you like this project, kindly drop a star ⭐️ for the [repository](https://github.com/zhorabay/Catalog);
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -165,9 +172,7 @@ If you like this project, kindly drop a start ⭐️ for the [repository](https:
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-**I would like to thank the following individuals and organizations for their contribution to this project.**
-
-- I would like to express my heartfelt gratitude to [**Microvere**](https://www.microverse.org/?grsf=mohammad-a-nbtazu) for the invaluable learning experience they have provided. 
+- We would like to express our heartfelt gratitude to [**Microvere**](https://www.microverse.org/?grsf=mohammad-a-nbtazu) for the invaluable learning experience they have provided. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
