@@ -11,7 +11,7 @@ class Game < Item
   end
 
   def aligable
-    (Date.today.year - @last_played_at.year) > 2
+    (Date.today.year - Date.parse(@last_played_at).year) > 2
   end
 
   def self.all
