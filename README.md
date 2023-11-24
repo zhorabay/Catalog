@@ -16,8 +16,8 @@
   - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
-    - [Usage](#usage)
     - [Setup](#setup)
+    - [Usage](#usage)
     - [Install](#install)
   - [👥 Author ](#-author-)
   - [🔭 Future Features ](#-future-features-)
@@ -95,8 +95,13 @@ Clone this repository to your desired folder:
 - To run the project, execute the following command:
 
 ```sh
- cd [YOUR FOLDER]
- git clone https://github.com/zhorabay/Catalog.git
+ Clone this repository to your desired folder:
+
+ Choose a directory
+ Open a Terminal
+ write: git clone git@github.com:zhorabay/Catalog.git
+ get into to directory "Catalog"
+ write: npm install
 ```
 
 ### Install
