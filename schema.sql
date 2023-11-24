@@ -2,9 +2,6 @@ CREATE TABLE items (
   id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   genre_id INT,
   author_id INT,
-  author VARCHAR(50) NOT NULL,
-  source VARCHAR(50) NOT NULL,
-  label VARCHAR(50) NOT NULL,
   publish_date DATE NOT NULL,
   archived BOOLEAN NOT NULL,
   labels_id INT,
@@ -17,7 +14,8 @@ CREATE TABLE books (
   id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   publisher VARCHAR(50) NOT NULL,
   cover_state VARCHAR(50) NOT NULL,
-  FOREIGN KEY (id) REFERENCES items(id)
+  items_id INT,
+  FOREIGN KEY (items_id) REFERENCES items(id)
 );
 
 CREATE TABLE labels (
@@ -29,7 +27,8 @@ CREATE TABLE labels (
 CREATE TABLE music_albums (
   id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   date_published DATE NOT NULL,
-  FOREIGN KEY (id) REFERENCES items(id)
+  items_id INT,
+  FOREIGN KEY (items_id) REFERENCES items(id)
 );
 
 CREATE TABLE genres (
@@ -48,5 +47,13 @@ CREATE TABLE game (
   publish_date DATE NOT NULL,
   multiplayer VARCHAR(100) NOT NULL,
   last_played_at DATE NOT NULL,
-  FOREIGN KEY (id) REFERENCES items(id)
+  items_id INT,
+  FOREIGN KEY (items_id) REFERENCES items(id)
 );
+
+CREATE INDEX game_items_asc ON game (items_id)
+CREATE INDEX music_albums_items_asc ON music_albums (items_id)
+CREATE INDEX books_items_asc ON books (items_id)
+CREATE INDEX items_author_asc ON items (author_id)
+CREATE INDEX items_genre_asc ON items (genre_id)
+CREATE INDEX items_labels_asc ON items (labels_id)
