@@ -35,7 +35,7 @@ RSpec.describe Game do
 
     context 'when last played game is more less than 2 years' do
       it 'returns if the game is archived' do
-        new_game = Game.new(Date.new(2020, 1, 1), 'no', Date.new(2021, 1, 1))
+        new_game = Game.new(Date.new(2020, 1, 1), 'no', Date.new(2021, 1, 1).to_s)
         expect(new_game.aligable).to eq(false)
       end
     end
