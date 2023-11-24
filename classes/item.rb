@@ -32,7 +32,7 @@ class Item
   private
 
   def can_be_archived?
-    difference = Time.now.year - @publish_date.year
-    difference >= 10
+    difference = Time.now.year - Date.parse(@publish_date).year
+    difference > 10
   end
 end
