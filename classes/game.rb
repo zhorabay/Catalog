@@ -14,6 +14,10 @@ class Game < Item
     (Date.today.year - @last_played_at.year) > 2
   end
 
+  def self.all
+    ObjectSpace.each_object(self).to_a
+  end
+
   private
 
   def can_be_archived?
